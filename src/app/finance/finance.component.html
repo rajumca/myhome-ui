@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-5">
+    <h1>Total: {{summary.total |currency:'INR'}}</h1>
+  </div>
+  <div class="col-7">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col-3">Year</th>
+            <th scope="col-2">Total</th>
+            <th scope="col-2">Months</th>
+              <th scope="col-2">Average</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let year of summary.years">
+            <td>{{year.year}}</td>
+            <td style="width: 2px" class="text-sm-right">{{year.total | currency:'INR'}}</td>
+            <td>{{year.months}}</td>
+            <td style="width: 2px"  class="text-sm-right">{{year.average | currency:'INR'}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- <div class="nav flex-column nav-pills" style="float: left" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <a class="nav-link active" aria-selected="true">Home</a>
+  <li *ngFor="let year of summary.years">
+   <a (aria-selected)="year.year===selectedYear.year" class="nav-item nav-link"  (click)="getYearSummary(year.year)">{{year.year}}</a>
+   </li>
+</div>
+<div class="tab-content" id="v-pills-tabContent">
+ Hello
+</div> -->
+
+
+<nav class="nav nav-pills nav-fill">
+  <li *ngFor="let year of summary.years">
+    <a [class.active]="year.year===selectedYear.year" class="nav-item nav-link"  (click)="getYearSummary(year.year)">{{year.year}}</a>
+  </li>
+</nav>
+
+<!-- <div *ngFor="let selectedYear of summary.years"> -->
+<!-- <h2>{{selectedYear.year}}</h2> -->
+
+<a class="btn btn-link">
+  {{selectedYear.year}}
+</a>
+<div class="show" id="collapseExample">
+  <table id="table{{selectedYear.year}}" style="width: 60%" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col-3">Date</th>
+        <th scope="col-2">Sent</th>
+        <th scope="col-2">Received</th>
+        <th scope="col-2">To</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of selectedYear.transactions">
+        <td>{{transaction.date}}</td>
+        <td>{{transaction.usd}}</td>
+        <td class="text-right">{{transaction.inr | currency:'INR'}}</td>
+        <td>{{transaction.sentTo}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- </div> -->

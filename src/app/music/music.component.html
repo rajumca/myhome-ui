@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-7">
+    <div class="list-group" *ngFor="let album of albums">
+      <button type="button" [class.active]="album.selected" (click)="selectAlbum(album)" class="list-group-item list-group-item-action active">
+        {{album.name}}({{album.year}})
+      </button>
+    </div>
+  </div>
+  <div class="col-5" style="position: fixed;  left:60%;">
+    <!-- <div *ngFor="let song of selectedAlbum.songs">
+
+      {{song.name}}
+
+    </div> -->
+    <ul class="list-group list-group-flush" *ngFor="let song of selectedAlbum.songs">
+      <li class="list-group-item"><img class="music-icon" src="/assets/images/song-icon-png-19.jpg">{{song.name}}</li>
+    </ul>
+  </div>
+
+</div>
