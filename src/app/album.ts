@@ -5,4 +5,8 @@ export class Album {
     year: number;
     selected: boolean;
     songs: Array<Song>;
+    accessed: number;
+    rating: number;
+    composer: string;
+    path: string;
 }
